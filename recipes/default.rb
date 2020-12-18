@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe "python"
-
 # foodcritic FC023: we prefer not having the resource on non-smartos
 if platform_family?("smartos")
   package "py27-expat" do
@@ -26,7 +24,7 @@ if platform_family?("smartos")
   end
 end
 
-python_pip "supervisor" do
+python_package 'supervisor' do
   action :upgrade
   version node['supervisor']['version'] if node['supervisor']['version']
 end
